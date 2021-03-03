@@ -1,11 +1,9 @@
-@ECHO OFF
-SET "calculator_value=0.00"
+
+ECHO OFF
 SET "file_path=%1"
 
 GOTO :get_max_decimal_len
 GOTO :EOF
-
-
 
 :get_max_decimal_len
 SETLOCAL EnableDelayedExpansion
@@ -66,10 +64,10 @@ GOTO :EOF
 
 :add_zeros
 CALL :slice %1 whole decimal
-SET /a "integer=%decimal%"
+
+SET "integer=%decimal%"
 SET /a count_zero=%2
 SET "output_string=!integer!"
-
 
 CALL :len %integer% len
 SET /a start_for = %len%+1
@@ -85,6 +83,8 @@ SET "numA=%calculator_value%"
 SET "numB=%1"
 SET "fpA=%numA:.=%"
 SET "fpB=%numB:.=%"
+
+
 SET /A add=fpA+fpB
 ECHO %numA% + %numB% = !add:~0,-%decimals_len%!.!add:~-%decimals_len%!
 SET "value=!add:~0,-%decimals_len%!.!add:~-%decimals_len%!"
